@@ -5,6 +5,9 @@ const db = require('./db/db')
 
 let PORT = process.env.YOUR_PORT || process.env.PORT || 3000;
 
+require('./models/associations.js');
+
+
 // app.use(router);
 
 app.listen(PORT, () => {
