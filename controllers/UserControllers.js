@@ -121,20 +121,20 @@ UserController.getOrdersFromUser = async (req, res) => {
     }
 }
 
-// UserController.getReviewsFromUser = async (req, res) => {
-//     try {
-//         let mail = req.params.mail
-//         const [orders, metadata] = await sequelize.query(`select * from orders join orders_services on orders.id_order = orders_services.orderIdOrder join services on orders_services.serviceIdService = services.id_service where userMail = "${mail}"`);
-//         if (!orders) {
-//             res.status(400).send('orders not found')
-//             return;
-//         }
-//         res.status(200).json(orders)
-//     } catch (error) {
-//         res.status(500).send(error)
-//         console.log(error)
-//     }
-// }
+UserController.getReviewsFromUser = async (req, res) => {
+    try {
+        let mail = req.params.mail
+        const [orders, metadata] = await sequelize.query(`select * from reviews join services on reviews.serviceIdService = services.id_service where userMail = "${mail}"`);
+        if (!orders) {
+            res.status(400).send('reviews not found')
+            return;
+        }
+        res.status(200).json(orders)
+    } catch (error) {
+        res.status(500).send(error)
+        console.log(error)
+    }
+}
 
 
 module.exports = UserController

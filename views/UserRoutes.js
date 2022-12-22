@@ -13,6 +13,7 @@ router.get('/', UserController.getAllUsers)
 // router.get('/id/:mail', authBearerMiddleware, isValidUser, UserController.getUserById)
 router.get('/id/:mail', UserController.getUserById)
 router.get('/orders/:mail', UserController.getOrdersFromUser)
+router.get('/reviews/:mail', UserController.getReviewsFromUser)
 
 // CRUD Update User
 // router.put('/update/:mail', authBearerMiddleware, isValidUser, UserController.updateUserById)
