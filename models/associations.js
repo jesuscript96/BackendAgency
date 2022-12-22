@@ -6,7 +6,9 @@ const Pil = require("./pil")
 const Review = require("./review")
 const Service = require("./service")
 
-User.hasMany(Order);
+User.hasMany(Order, {
+    foreignKey: "userMail"
+  });
 Order.belongsTo(User);
 
 User.hasMany(Pil);

@@ -25,7 +25,8 @@ Service.init({
         type: DataTypes.STRING
     },
     available: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
     },
     img: {
         type: DataTypes.STRING

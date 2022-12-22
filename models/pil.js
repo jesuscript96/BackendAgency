@@ -18,6 +18,9 @@ Pil.init({
     text: {
         type: DataTypes.STRING
     },
+    type: {
+        type: DataTypes.STRING
+    },
     img: {
         type: DataTypes.STRING
     },
