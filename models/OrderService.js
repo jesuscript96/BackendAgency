@@ -11,6 +11,12 @@ OrderService.init({
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
+    },
+    orderIdOrder: {
+        type: DataTypes.INTEGER
+    },
+    serviceIdService: {
+        type: DataTypes.INTEGER
     }
 }, {
     sequelize,

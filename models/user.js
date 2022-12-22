@@ -28,10 +28,12 @@ User.init({
         type: DataTypes.INTEGER
     },
     role: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     },
     client: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
   }, {
     sequelize, 

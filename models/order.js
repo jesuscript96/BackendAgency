@@ -14,6 +14,9 @@ Order.init({
     },
     order_date: {
         type: DataTypes.DATEONLY
+    },
+    userMail: {
+        type: DataTypes.STRING
     }
 }, {
     sequelize,
