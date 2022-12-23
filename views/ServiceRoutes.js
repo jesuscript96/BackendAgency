@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const { isValidRoleAdmin, authBearerMiddleware } = require("../middlewares/authMiddleware")
+
 const ServiceController = require('../controllers/ServiceControllers')
 
 // CRUD READ todas las services
@@ -16,15 +18,13 @@ router.get('/type/:type' , ServiceController.getServiceByType)
 router.get('/available' , ServiceController.getAvailableServices)
 
 // CRUD CREATE service
-router.post('/newservice' , ServiceController.postNewService)
+router.post('/newservice' , authBearerMiddleware, isValidRoleAdmin, ServiceController.postNewService)
 
 // CRUD Update service
-// router.put('/update/:mail', authBearerMiddleware, isValidService, ServiceController.updateServiceById)
-router.put('/update/:id', ServiceController.updateServiceAvailabilityById)
+router.put('/update/:id', authBearerMiddleware, isValidRoleAdmin, ServiceController.updateServiceAvailabilityById)
 
 // CRUD delete Service - solo el admin
-// router.delete('/delete/:mail' , authBearerMiddleware, isValidRoleAdmin, ServiceController.deleteServiceById)
-router.delete('/delete/:id' , ServiceController.deleteServiceById)
+router.delete('/delete/:id', authBearerMiddleware, isValidRoleAdmin, ServiceController.deleteServiceById)
 
 // CRUD READ services reviews
 router.get('/reviews/:id' , ServiceController.getReviewsFromService)

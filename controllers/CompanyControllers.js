@@ -1,5 +1,7 @@
 const Company = require('../models/company')
 var sequelize = require('../db/db')
+const jsonwebtoken = require("jsonwebtoken");
+
 
 const CompanyController = {};
 
@@ -17,7 +19,11 @@ CompanyController.getAllCompanies = async (req, res) => {
 
 CompanyController.getCompaniesByUser = async (req, res) => {
     try {
-        let mail = req.params.mail
+        const { authorization } = req.headers;
+        const [strategy, jwt] = authorization.split(" ");
+        const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
+        console.log(payload)
+        let mail = payload.mail
         let resp = await Company.findAll({
             where: { userMail: mail }
         })
@@ -32,6 +38,11 @@ CompanyController.getCompaniesByUser = async (req, res) => {
 CompanyController.postNewCompany = async (req, res) => {
     try {
         let data = req.body
+        const { authorization } = req.headers;
+        const [strategy, jwt] = authorization.split(" ");
+        const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
+        console.log(payload)
+        let userMail = payload.mail
         let resp = await Company.create({
             mail: data.mail,
             name: data.name,
@@ -39,7 +50,7 @@ CompanyController.postNewCompany = async (req, res) => {
             cif: data.cif,
             city: data.city,
             sector: data.sector,
-            userMail: data.userMail,
+            userMail: userMail,
         })
 
         res.send(resp)
@@ -51,17 +62,29 @@ CompanyController.postNewCompany = async (req, res) => {
 CompanyController.updateCompanyPhoneById = async (req, res) => {
     try {
         let data = req.body
-        let id = req.params.id
-        let resp = await Company.update(
-            {
-                phone: data.phone               
-            },
-            {
-                where: { id_company: id }
-            }
-        )
+        const { authorization } = req.headers;
+        const [strategy, jwt] = authorization.split(" ");
+        const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
+        console.log(payload)
+        let mail = payload.mail
 
-        res.send(resp)
+        let id = req.params.id
+        let company = await Company.findOne({
+            where: { id_company: id }
+        })
+        console.log(company)
+        if (company.userMail === mail) {
+            let resp = await Company.update(
+                {
+                    phone: data.phone
+                },
+                {
+                    where: { id_company: id }
+                }
+            )
+
+            res.send(resp)
+        }
 
     } catch (err) {
         res.send(err)
@@ -71,17 +94,29 @@ CompanyController.updateCompanyPhoneById = async (req, res) => {
 CompanyController.updateCompanyMailById = async (req, res) => {
     try {
         let data = req.body
-        let id = req.params.id
-        let resp = await Company.update(
-            {
-                mail: data.mail              
-            },
-            {
-                where: { id_company: id }
-            }
-        )
+        const { authorization } = req.headers;
+        const [strategy, jwt] = authorization.split(" ");
+        const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
+        console.log(payload)
+        let mail = payload.mail
 
-        res.send(resp)
+        let id = req.params.id
+        let company = await Company.findOne({
+            where: { id_company: id }
+        })
+        console.log(company)
+        if (company.userMail === mail) {
+            let resp = await Company.update(
+                {
+                    mail: data.mail
+                },
+                {
+                    where: { id_company: id }
+                }
+            )
+
+            res.send(resp)
+        }
 
     } catch (err) {
         res.send(err)
