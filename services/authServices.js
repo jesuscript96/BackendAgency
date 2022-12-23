@@ -57,16 +57,16 @@ function encryptPassword(password) {
     return hash;
   }
 
-// async function isValidUserAndPassword(user, password) {
-//     const userFound = await User.findOne({
-//       where: {mail: mail}
-//   });
-//     if (userFound) {
-//       const hash = encryptPassword(password);
-//       return hash === userFound.password;
-//     }
-//     return false;
-//   }
+async function isValidUserAndPassword(user, password) {
+    const userFound = await User.findOne({
+      where: {mail: mail}
+  });
+    if (userFound) {
+      const hash = encryptPassword(password);
+      return hash === userFound.password;
+    }
+    return false;
+  }
   
 module.exports = {
     assertValidPasswordService,

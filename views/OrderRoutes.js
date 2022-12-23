@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
+const { isValidRoleAdmin, authBearerMiddleware } = require("../middlewares/authMiddleware")
+
 const OrderController = require('../controllers/OrderControllers')
 
 // CRUD READ todas las Orders
-router.get('/' , OrderController.getAllOrders)
+router.get('/' , authBearerMiddleware, isValidRoleAdmin, OrderController.getAllOrders)
 
 // CRUD CREATE Order
 router.post('/neworder' , OrderController.postNewOrder)

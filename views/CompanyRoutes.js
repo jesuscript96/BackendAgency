@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
+const { isValidRoleAdmin, authBearerMiddleware } = require("../middlewares/authMiddleware")
+
 const CompanyController = require('../controllers/CompanyControllers')
 
 // CRUD READ todas las Companys
-router.get('/' , CompanyController.getAllCompanies)
+router.get('/' , authBearerMiddleware, isValidRoleAdmin, CompanyController.getAllCompanies)
 
 // CRUD READ Companys por id
 router.get('/user/:mail' , CompanyController.getCompaniesByUser)
@@ -19,6 +21,6 @@ router.put('/update/mail/:id', CompanyController.updateCompanyMailById)
 
 // CRUD delete Company - solo el admin
 // router.delete('/delete/:mail' , authBearerMiddleware, isValidRoleAdmin, CompanyController.deleteCompanyById)
-router.delete('/delete/:id' , CompanyController.deleteCompanyById)
+router.delete('/delete/:id' , authBearerMiddleware, isValidRoleAdmin, CompanyController.deleteCompanyById)
 
 module.exports = router
