@@ -13,6 +13,7 @@ router.get('/id/:id' , ServiceController.getServiceById)
 
 // CRUD READ services por type
 router.get('/type/:type' , ServiceController.getServiceByType)
+router.get('/type/:type/price/:price' , ServiceController.getServiceByTypePrice)
 
 // CRUD READ services por availability
 router.get('/available' , ServiceController.getAvailableServices)

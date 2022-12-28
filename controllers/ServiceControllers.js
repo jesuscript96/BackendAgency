@@ -57,6 +57,28 @@ ServiceController.getServiceByType = async (req, res) => {
     }
 }
 
+ServiceController.getServiceByTypePrice = async (req, res) => {
+    try {
+        let type = req.params.type
+        let price = req.params.price
+        let resp = await Service.findAll({
+            where: {type: 
+            {
+                [Op.like] : `%${type}%`
+            },
+            price : {
+                [Op.lte]: price
+            }
+            }
+        })
+        .then(resp => {
+            res.send(resp)
+            })
+    } catch (err) {
+        res.send(err)
+    }
+}
+
 ServiceController.getAvailableServices = async (req, res) => {
     try {
         let resp = await Service.findAll({
