@@ -13,7 +13,8 @@ Service.init({
         allowNull: false
     },
     name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     },
     description: {
         type: DataTypes.STRING

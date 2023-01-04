@@ -29,6 +29,7 @@ const authBasicMiddleware = async (req, res, next) => {
 const authBearerMiddleware = async (req, res, next) => {
   const { authorization } = req.headers;
   // 'Bearer 1234'.split(' ') -> ['Bearer','1234']
+  console.log(authorization)
   if (authorization) {
     const [strategy, jwt] = authorization.split(" ");
   try {
@@ -55,7 +56,7 @@ const authBearerMiddleware = async (req, res, next) => {
 
 
   } catch (error) {
-    res.status(401).json({ message: "You are not authenticated" });
+    res.status(401).json({ message: "You are not authenticated", authorization });
     return;
   }
   } else {
@@ -70,7 +71,7 @@ const isValidRoleAdmin = (req, res, next) => {
   const { authorization } = req.headers;
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
-  if (payload.role === true) {
+  if (payload.roleIdRole === 1) {
     next();
   } else {
     res.status(403).json({ message: "You are not authorized" });

@@ -35,7 +35,8 @@ module.exports = {
           key: "mail"
         },
         onDelete: "cascade",
-        onUpdate: "cascade"
+        onUpdate: "cascade",
+        allowNull: false
       }
     });
   },

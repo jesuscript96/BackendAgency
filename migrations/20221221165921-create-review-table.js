@@ -31,7 +31,8 @@ module.exports = {
         onUpdate: "cascade"
       },
       serviceIdService: {
-        type: Sequelize.INTEGER,        allowNull: false,
+        type: Sequelize.INTEGER, 
+        allowNull: false,
         references: {
           model: "services",
           key: "id_service"

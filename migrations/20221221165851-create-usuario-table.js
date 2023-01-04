@@ -10,7 +10,8 @@ module.exports = {
         allowNull: false
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       name: {
         type: Sequelize.STRING
@@ -18,8 +19,15 @@ module.exports = {
       phone: {
         type: Sequelize.INTEGER
       },
-      role: {
-        type: Sequelize.BOOLEAN
+      roleIdRole: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "roles",
+          key: "id_role"
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade",
+        defaultValue: 2
       },
       client: {
         type: Sequelize.BOOLEAN

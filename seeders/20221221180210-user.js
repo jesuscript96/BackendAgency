@@ -8,7 +8,7 @@ module.exports = {
       mail: "adminseeder@admin.com",
       password: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicHJ1ZWJhQHBydWViYS5jb20iLCJjcmVhdGVkIjoxNjY5MzIxOTY1MDgzLCJyb2xlIjpudWxsLCJpYXQiOjE2NjkzMjE5NjV9.0tjohjU4gE2HBljk9fdKnmYKnLVlchH7vI-WZl3TFN4",
       name: "jesus",
-      role: true,
+      roleIdRole: 1,
       phone: 603603603,
       client: false
     },
@@ -17,7 +17,7 @@ module.exports = {
       password: "eyyyyy2",
       name: "christian",
       phone: 603603603,
-      role: false,
+      roleIdRole: 2,
       client: true
     },
     {
@@ -25,7 +25,7 @@ module.exports = {
       password: "eyyyyy2",
       name: "marcos",
       phone: 603603603,
-      role: false,
+      roleIdRole: 2,
       client: false
     },
     {
@@ -33,7 +33,7 @@ module.exports = {
       password: "Lucas55555",
       name: "lucas",
       phone: 603603603,
-      role: false,
+      roleIdRole: 2,
       client: false
     },
     {
@@ -41,7 +41,7 @@ module.exports = {
       password: "eyyyyy2",
       name: "rodrigo",
       phone: 603603603,
-      role: false,
+      roleIdRole: 2,
       client: false
     }
     

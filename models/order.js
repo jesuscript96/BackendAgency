@@ -16,7 +16,8 @@ Order.init({
         type: DataTypes.DATEONLY
     },
     userMail: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, {
     sequelize,

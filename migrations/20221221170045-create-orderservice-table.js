@@ -17,7 +17,8 @@ module.exports = {
           key: "id_order"
         },
         onDelete: "cascade",
-        onUpdate: "cascade"
+        onUpdate: "cascade",
+        allowNull: false
       },
       serviceIdService: {
         type: Sequelize.INTEGER,
@@ -26,7 +27,8 @@ module.exports = {
           key: "id_service"
         },
         onDelete: "cascade",
-        onUpdate: "cascade"
+        onUpdate: "cascade",
+        allowNull: false
       }
     });
   },

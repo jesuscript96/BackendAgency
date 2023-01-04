@@ -17,19 +17,16 @@ User.init({
     },
     password: {
       type: DataTypes.STRING,
+      allowNull: false
     },
     name: {
         type: DataTypes.STRING,
         validate: {
             len: [1, 45]
-        }
+        },
       },
     phone: {
         type: DataTypes.INTEGER
-    },
-    role: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
     },
     client: {
         type: DataTypes.BOOLEAN,
