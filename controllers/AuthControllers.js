@@ -81,14 +81,14 @@ async function authRegisterController(req, res) {
     //   uuid: userFound.uuid,
       mail: userFound.mail,
       created: Date.now(),
-      role: userFound.role,
+      roleIdRole: userFound.roleIdRole,
       client: userFound.client
     }, secret);
   
     res.status(200).json({
       message: "Login successful",
       jwt: jwt,
-      role: userFound.role,
+      roleIdRole: userFound.roleIdRole,
       mail: userFound.mail,
       client: userFound.client
     });
