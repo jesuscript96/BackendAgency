@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       type: {
         type: Sequelize.STRING
