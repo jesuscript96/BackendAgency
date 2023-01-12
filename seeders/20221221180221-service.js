@@ -25,7 +25,7 @@ module.exports = {
       description: "Our paid advertising service is designed to help businesses increase their online visibility and reach their target audience. We use targeted ads on various platforms, including Google AdWords, Facebook, and Instagram, to ensure that your ads are being seen by the right people at the right time. Our team of experts will work with you to develop a customized advertising plan that meets your specific business goals and budget. With our paid advertising service, you can expect to see an increase in website traffic, leads, and ultimately, sales. Contact us today to learn more about how we can help your business grow through paid advertising.",
       type: "sem, paid",
       price: 700,
-      img: "http//tal",
+      img: "https://oviondwebsite.s3.amazonaws.com/online_marketing_commercial_connection_technology_140040630e.jpg",
       available: true
     },
     {
