@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { isValidRoleAdmin, authBearerMiddleware } = require("../middlewares/authMiddleware")
 
-const ReviewController = require('../controllers/reviewControllers')
+const ReviewController = require('../controllers/ReviewControllers')
 
 // CRUD delete Review - solo el admin
 // router.delete('/delete/:mail' , authBearerMiddleware, isValidRoleAdmin, ReviewController.deleteReviewById)

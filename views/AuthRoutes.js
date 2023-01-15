@@ -5,7 +5,7 @@ const authRouter = express.Router();
 const {
     authLoginController,
     authRegisterController,
-} = require("../controllers/authControllers.js");
+} = require("../controllers/AuthControllers.js");
 
 // const {corsMiddleware} = require ("../middlewares/corsMiddleware")
 
