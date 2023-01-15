@@ -16,6 +16,7 @@ const { Op } = require("sequelize");
 ServiceController.getAllServices = async (req, res) => {
     try {
         let resp = await Service.findAll({
+            attributes: {exclude: ['ordersServiceIdOrdersservices']}
         })
             .then(resp => {
                 res.send(resp)
