@@ -30,6 +30,7 @@ ServiceController.getServiceById = async (req, res) => {
     try {
         let id = req.params.id
         let resp = await Service.findOne({
+            attributes: {exclude: ['ordersServiceIdOrdersservices']},
             where: { id_Service: id }
         })
             .then(resp => {
@@ -44,6 +45,7 @@ ServiceController.getServiceByType = async (req, res) => {
     try {
         let type = req.params.type
         let resp = await Service.findAll({
+            attributes: {exclude: ['ordersServiceIdOrdersservices']},
             where: {
                 type:
                 {
@@ -64,6 +66,7 @@ ServiceController.getServiceByTypePrice = async (req, res) => {
         let type = req.params.type
         let price = req.params.price
         let resp = await Service.findAll({
+            attributes: {exclude: ['ordersServiceIdOrdersservices']},
             where: {
                 type:
                 {
@@ -85,6 +88,7 @@ ServiceController.getServiceByTypePrice = async (req, res) => {
 ServiceController.getAvailableServices = async (req, res) => {
     try {
         let resp = await Service.findAll({
+            attributes: {exclude: ['ordersServiceIdOrdersservices']},
             where: {
                 available: true
             }
@@ -155,6 +159,7 @@ ServiceController.getReviewsFromService = async (req, res) => {
     try {
         let id = req.params.id
         let service = await Review.findAll({
+            attributes: {exclude: ['ordersServiceIdOrdersservices']},
             where: { serviceidService: id },
             attributes: ['userMail', 'text', 'rating', 'creation_date', 'serviceIdService']
 
