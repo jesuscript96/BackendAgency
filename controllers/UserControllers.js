@@ -55,11 +55,12 @@ UserController.getUserById = async (req, res) => {
 UserController.updateUserNameById = async (req, res) => {
     try {
         let data = req.body
+        console.log("soy la data", data)
         const { authorization } = req.headers;
         const [strategy, jwt] = authorization.split(" ");
         const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
-        console.log(payload)
         let mail = payload.mail
+        console.log(data.name)
         let resp = await User.update(
             {
                 name: data.name
@@ -76,6 +77,32 @@ UserController.updateUserNameById = async (req, res) => {
         res.send(err)
     }
 }
+UserController.updateUserPhoneById = async (req, res) => {
+    try {
+        let data = req.body
+        const { authorization } = req.headers;
+        const [strategy, jwt] = authorization.split(" ");
+        const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
+        console.log(payload)
+        let mail = payload.mail
+        let resp = await User.update(
+            {
+                phone: data.phone
+
+            },
+            {
+                where: { mail: mail }
+            }
+        )
+
+        res.send(resp)
+
+    } catch (err) {
+        res.send(err)
+    }
+}
+
+
 
 UserController.updateUserClientById = async (req, res) => {
     try {

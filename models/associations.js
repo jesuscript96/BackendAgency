@@ -1,4 +1,5 @@
 const User = require("./user")
+const Role = require("./role")
 const Company = require("./company")
 const Order = require("./order")
 const OrderService = require("./OrderService")
@@ -10,6 +11,9 @@ User.hasMany(Order, {
     foreignKey: "userMail"
   });
 Order.belongsTo(User);
+
+Role.hasMany(User);
+User.belongsTo(Role);
 
 User.hasMany(Pil);
 Pil.belongsTo(User);

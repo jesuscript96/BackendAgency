@@ -13,10 +13,12 @@ OrderService.init({
         allowNull: false
     },
     orderIdOrder: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
     serviceIdService: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
 }, {
     sequelize,

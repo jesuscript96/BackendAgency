@@ -13,10 +13,11 @@ Service.init({
         allowNull: false
     },
     name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     },
     description: {
-        type: DataTypes.STRING
+        type: DataTypes.TEXT
     },
     price: {
         type: DataTypes.INTEGER

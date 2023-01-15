@@ -11,7 +11,8 @@ module.exports = {
         allowNull: false
       },
       text: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       rating: {
         type: Sequelize.INTEGER
@@ -21,6 +22,7 @@ module.exports = {
       },
       userMail: {
         type: Sequelize.STRING,
+        allowNull: false,
         references: {
           model: "users",
           key: "mail"
@@ -29,7 +31,8 @@ module.exports = {
         onUpdate: "cascade"
       },
       serviceIdService: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER, 
+        allowNull: false,
         references: {
           model: "services",
           key: "id_service"

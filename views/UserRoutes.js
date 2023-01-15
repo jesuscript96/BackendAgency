@@ -14,7 +14,8 @@ router.get('/orders',authBearerMiddleware, UserController.getOrdersFromUser)
 router.get('/reviews', authBearerMiddleware,UserController.getReviewsFromUser)
 
 // CRUD Update User
-router.put('/update', authBearerMiddleware,UserController.updateUserNameById)
+router.put('/update/name', authBearerMiddleware,UserController.updateUserNameById)
+router.put('/update/phone', authBearerMiddleware,UserController.updateUserPhoneById)
 router.put('/confirmclient', authBearerMiddleware,UserController.updateUserClientById)
 
 // CRUD delete User - solo el admin

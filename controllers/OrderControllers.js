@@ -8,9 +8,7 @@ const OrderController = {};
 
 OrderController.getAllOrders = async (req, res) => {
     try {
-        let resp = await Order.findAll({
-            attributes: ['id_order', 'order_date', 'userMail']
-        })
+        let resp = await sequelize.query(`select * from orders join orders_services on orders.id_order =  orders_services.orderIdOrder join services on orders_services.serviceIdService = services.id_service  `)
             .then(resp => {
                 console.log(resp)
                 res.send(resp)
@@ -29,7 +27,8 @@ OrderController.postNewOrder = async (req, res) => {
         console.log(payload)
         let mail = payload.mail
         const [orders, metadata] = await sequelize.query(`INSERT INTO orders (order_date, userMail)
-        VALUES ("${data.order_date}", "${mail}")`);let resp = await User.update(
+        VALUES ("${data.order_date}", "${mail}")`);
+        let resp = await User.update(
             {
                 client: true,
 
