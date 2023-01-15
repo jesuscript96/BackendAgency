@@ -1,5 +1,5 @@
-const Service = require('../models/Service')
-const Review = require('../models/Review')
+const Service = require('../models/service')
+const Review = require('../models/review')
 const ServiceController = {}
 
 const { Op } = require("sequelize");
