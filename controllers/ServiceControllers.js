@@ -159,7 +159,6 @@ ServiceController.getReviewsFromService = async (req, res) => {
     try {
         let id = req.params.id
         let service = await Review.findAll({
-            attributes: {exclude: ['ordersServiceIdOrdersservices']},
             where: { serviceidService: id },
             attributes: ['userMail', 'text', 'rating', 'creation_date', 'serviceIdService']
 
